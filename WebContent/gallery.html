@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Gallery</title>
+<!-- jquery 밑에 jquery-ui(jquery기반한 플러그인)가 있어야함 반대일경우 인식을 못함 
+	순서가 중요하다 css->jquery->jquery-ui
+-->
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
+	rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="./fotorama.css">
+<script type="text/javascript" src="./fotorama.js"></script>
+<script type="text/javascript">
+	var showImage = function(e) {
+		var imgId = "#im"+e.currentTarget.id;
+	
+		$("#big li").hide();
+		$(imgId).show("slow");
+	};
+	function search(){  // var search = function() 으로 정의 할 수도 있음
+		$.ajax({
+		    url : "http://apis.daum.net/search/image", 
+		    //network - script - image 에서 header - url을 보면 json으로 값을 주는걸 알수 잇음
+		    dataType : "jsonp",
+		    type : "post",
+		    jsonp : "callback",
+		    data : {
+		        apikey : "3803541fce89370275fcefe628ed9f9acafe223e", 
+		        q : $("#q").val(),             // search keyword
+		        result : "20",                 // result set length
+		        pageno : $("#pageno").val(),   // pageNo
+		        output : "json"                // JSONP type format json
+		    },
+		    success : function(r){
+		        var list = r.channel.item;
+		        var fr = "";
+		        for(var i in list) {
+		        	fr += "<a href=\""+ list[i].image +"\"><img src=\""+ list[i].thumbnail +"\"></a>";
+		        }
+		        fr = "<div>" + fr + "</div>";
+	        	$("#fr").html(fr);
+	        	$("#fr div").fotorama({width:720,height:480});
+
+	        	$("#pageno").val(parseInt($("#pageno").val())+1);
+
+		    }
+		});
+		return false;
+	}
+	$(function() {
+		$("#go").click(search); //#go에서 click event 발생시 search 함수 실행
+		$("#q").bind("change", function(){$("#pageno").val(1);}); // 검색값이 바뀌면 페이지 넘버를 1로 
+		$("#q").live("keypress", function(event) {
+			if (event.which === 13) {
+				search();
+			}
+		})
+	});
+</script>
+</head>
+<body>
+	<form onsubmit="return search()">
+		<input id="q" type="text" value="snsd">
+		<input id="pageno" type="text" value="1">
+		<input id="go" type="button" value="Go">
+	</form>
+	<hr>
+	<div id="fr"></div>
+	
+	<!-- 에드 센스  ad -->
+	<div style="padding-left:46px">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-6888948265589071";
+/* gallery */
+google_ad_slot = "3350753572";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+	</div>
+</body>
+</html>
