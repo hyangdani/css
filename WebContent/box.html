@@ -4,43 +4,55 @@
 <meta charset="UTF-8">
 <title>Box Model - Examples of margins, padding, and borders</title>
 <style type="text/css">
-	ul {
-		background: yellow;
-		margin: 12px;
-		/* ctrl + alt + ↑ 를 하면 복사가됨
+ul {
+	background: yellow;
+	margin: 12px;
+	/* ctrl + alt + ↑ 를 하면 복사가됨
 			shift + tab 은 탭을 당겨줌*/
-		padding: 3px;
-	}
-	
-	li {
-		color: white;
-		background: blue;
-		margin: 12px;
-		padding: 12px 0px 12px 12px;
-		list-style: none;
-	}
-	
-	li.withborder {
-		border-style: dashed;
-		border-width: medium;
-		border-color: lime;
-	}
-	
-	div {
-		background: #F00;
-		border: 1px solid green;
-		width: 50%;
-		height: 80px;
-	}
-	
-	p {
-		border: 3PX dashed #886;
-		margin: auto;
-		text-align: center;
-		padding-top: 20px;
-		width: 50%;
-		padding-bottom: 20px;
-	}
+	padding: 3px;
+}
+
+li {
+	color: white;
+	background: blue;
+	margin: 12px;
+	padding: 12px 0px 12px 12px;
+	list-style: none;
+}
+
+li.withborder {
+	border-style: dashed;
+	border-width: medium;
+	border-color: lime;
+}
+/*
+div {
+	background: #F00;
+	border: 1px solid green;
+	width: 50%;
+	height: 80px;
+}
+*/
+#container{
+	border: 2px dotted #00f;
+}
+div div{
+	background: red;
+	border: 1px solid green;
+	width: 80px;
+	height: 200px;
+	margin: 10px 30px;
+	display:inline-block;
+}
+
+p {
+	border: 3PX dashed #886;
+	margin: auto;
+	text-align: center;
+	padding-top: 20px;
+	width: 50%;
+	padding-bottom: 20px;
+}
 </style>
 </head>
 <body>
@@ -49,11 +61,42 @@
 		<li class="withborder">Second element of list is a bit longer to
 			illustrate wrapping</li>
 	</ul>
-
-	<div>
-		somtext
-		<p>othertext
-		<p>
+	<div id="container">
+		<div>
+			somtext
+			<p>othertext
+			<p>
+		</div>	
+		<div>
+			somtext1
+			<p>othertext1
+			<p>
+		</div>
+		<div>
+			somtext2
+			<p>othertext2
+			<p>
+		</div>
+		<div>
+			somtext3
+			<p>othertext3
+			<p>
+		</div>
+		<div>
+			somtext4
+			<p>othertext4
+			<p>
+		</div>
+		<div>
+			somtext5
+			<p>othertext5
+			<p>
+		</div>
+		<div>
+			somtext6
+			<p>othertext6
+			<p>
+		</div>
 	</div>
 </body>
 </html>
