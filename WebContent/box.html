@@ -9,26 +9,51 @@
 		margin: 12px;
 		/* ctrl + alt + ↑ 를 하면 복사가됨
 			shift + tab 은 탭을 당겨줌*/
-		padding : 3px;
+		padding: 3px;
 	}
-	li{
-		color:white;
-		background:blue;
+	
+	li {
+		color: white;
+		background: blue;
 		margin: 12px;
 		padding: 12px 0px 12px 12px;
-		list-style : none;
+		list-style: none;
 	}
-	li.withborder{
-		border-style:dashed;
-		border-width:medium;
-		border-color:lime;
+	
+	li.withborder {
+		border-style: dashed;
+		border-width: medium;
+		border-color: lime;
+	}
+	
+	div {
+		background: #F00;
+		border: 1px solid green;
+		width: 50%;
+		height: 80px;
+	}
+	
+	p {
+		border: 3PX dashed #886;
+		margin: auto;
+		text-align: center;
+		padding-top: 20px;
+		width: 50%;
+		padding-bottom: 20px;
 	}
 </style>
 </head>
 <body>
 	<ul>
 		<li>First element of list</li>
-		<li class="withborder">Second element of list is a bit longer to illustrate wrapping</li>
+		<li class="withborder">Second element of list is a bit longer to
+			illustrate wrapping</li>
 	</ul>
+
+	<div>
+		somtext
+		<p>othertext
+		<p>
+	</div>
 </body>
 </html>
